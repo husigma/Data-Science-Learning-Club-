@@ -1,0 +1,43 @@
+---
+title: "Api"
+author: "Kurt"
+date: "7/30/2017"
+output: html_document
+---
+
+Getting the soccer data. and putting it in the system
+```{r}
+newdata<-engsoccerdata::england5
+
+```
+
+
+Looking at the head of the dataset to make sure it look ok. Already I have seen that the top 5 observation has no date. 
+```{r}
+head(newdata)
+```
+
+how many rows of data are in your dataset
+```{r}
+nrow(newdata)
+```
+
+
+how to refer to a particular row and column to find a value
+```{r}
+newdata[10000,4]
+```
+
+for each column, how many rows have data values, and what datatype are they
+```{r}
+str(newdata)
+```
+
+what constitutes a missing value (null, blank space, NaN, placeholder value, etc.)
+NA's constitute a missing value.
+
+descriptive summary statistics (min, max, mean, median, variance, number of distinct values, etc.) on each key column in your dataset
+```{r}
+summary(newdata)
+```
+
