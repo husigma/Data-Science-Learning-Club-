@@ -7,7 +7,7 @@ output: html_document
 
 Getting the soccer data. and putting it in the system
 ```{r}
-newdata<-engsoccerdata::england5
+newdata<-engsoccerdata::england
 
 ```
 
@@ -31,6 +31,8 @@ newdata[10000,4]
 for each column, how many rows have data values, and what datatype are they
 ```{r}
 str(newdata)
+colSums(is.na(newdata))
+
 ```
 
 what constitutes a missing value (null, blank space, NaN, placeholder value, etc.)
