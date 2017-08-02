@@ -1,0 +1,69 @@
+---
+title: "Exercise 2"
+author: "Kurt"
+date: "8/1/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+importing data
+```{r}
+newdata<-engsoccerdata::england
+
+```
+
+
+Using the soccer data that we already used in exercise 1. Let look at the head
+
+```{r cars}
+head(newdata)
+```
+getting the Library that I need 
+```{r}
+library(ggplot2)
+```
+getting the teams
+```{r}
+winners<-newdata[newdata$home =="Arsenal",]
+
+```
+
+Box and whisker plots (boxplots)
+```{r}
+boxwish <- ggplot(winners, aes(x=visitor, y = totgoal)) + geom_boxplot()+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+```
+Now the graph
+```{r}
+boxwish + labs(x = "Visiting Team", y = "Total goal for games")
+boxwish
+```
+
+Histograms and bar charts
+```{r}
+hist(newdata$goaldif, xlab = "Goal Difference", main = "Histogram of goal difference")
+
+```
+Bar chart of the results
+```{r}
+barch<- ggplot(newdata, aes(result))+geom_bar(aes(fill = result)) + labs(x = "Result", y = "Count")
+barch
+```
+
+Scatterplots
+
+```{r}
+prime <- newdata[newdata$tier == 1,]
+scat<- ggplot(prime, aes(home, visitor)) + geom_point(aes(fill = goaldif)) + theme_minimal()+ theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+scat 
+```
+
+
+Maps (for geographic data)
+
+```{r}
+p <- ggplot(prime, aes(home, goaldif))  +  geom_tile(aes(fill = result))  + theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))
+p
+```
+
